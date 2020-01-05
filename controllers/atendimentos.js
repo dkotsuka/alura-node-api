@@ -1,4 +1,4 @@
-const atendimento = require('../models/atendimentos')
+const Atendimento = require('../models/atendimentos')
 module.exports = app => {
 
     app.route('/atendimentos')
@@ -6,8 +6,7 @@ module.exports = app => {
             resp.send("Você está na rota de atendimentos e está fazendo um GET")
         })
         .post((req, resp) => {
-            console.log(req.body)
-            atendimento.adiciona(req.body)
-            resp.send("Você está na rota de atendimentos e está fazendo um POST")
+            const atendimento = req.body
+            Atendimento.adiciona(atendimento, resp)
         })
 }
